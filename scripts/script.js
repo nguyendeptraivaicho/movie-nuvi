@@ -60,6 +60,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     Your browser does not support the video tag.
                 </video>
             `;
+        } else {
+            videoContainer.innerHTML = `<p>Video not found</p>`;
         }
     }
 
