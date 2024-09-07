@@ -40,6 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function showMovieList() {
         movieList.style.display = 'flex';
         movieDetail.style.display = 'none';
+        videoContainer.innerHTML = ''; // Clear video container
     }
 
     movies.forEach(movie => {
