@@ -27,7 +27,8 @@ main {
     border: 1px solid #ddd;
     border-radius: 8px;
     overflow: hidden;
-    width: 300px;
+    width: 100%; /* Adjusted to fit mobile screen */
+    max-width: 300px; /* Limiting the maximum width */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -48,10 +49,21 @@ main {
 
 #movie-detail {
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 #video-container {
     margin-top: 1rem;
+    width: 100%; /* Full width */
+    max-width: 100%; /* Prevent overflow */
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+}
+
+video {
+    width: 100%; /* Full width */
+    height: auto; /* Maintain aspect ratio */
 }
 
 footer {
