@@ -1,1 +1,0 @@
-<img src="../admin/Welcome.jpg" width="630" height="375" />
