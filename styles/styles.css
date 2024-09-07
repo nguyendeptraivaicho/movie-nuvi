@@ -1,8 +1,14 @@
-body {
-    font-family: Arial, sans-serif;
+/* Reset một số kiểu mặc định để trang web hiển thị nhất quán */
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
     background-color: #f4f4f4;
+    color: #333;
 }
 
 header {
@@ -27,9 +33,14 @@ main {
     border: 1px solid #ddd;
     border-radius: 8px;
     overflow: hidden;
-    width: 100%; /* Full width on small screens */
-    max-width: 300px; /* Maximum width */
+    width: 100%; /* Đảm bảo chiều rộng phù hợp với các màn hình nhỏ */
+    max-width: 300px; /* Chiều rộng tối đa của thẻ phim */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.movie-card:hover {
+    transform: scale(1.05);
 }
 
 .movie-card img {
@@ -58,24 +69,43 @@ main {
     margin-top: 1rem;
     width: 100%;
     max-width: 100%;
-    box-sizing: border-box; /* Include padding and border in element's total width and height */
+    box-sizing: border-box; /* Đảm bảo padding và border được tính trong kích thước tổng */
 }
 
 video {
     width: 100%;
     height: auto;
-    max-width: 100%; /* Prevent overflow */
+    max-width: 100%; /* Ngăn video bị tràn viền */
 }
 
-/* Media Queries for Responsive Design */
-@media (max-width: 600px) {
-    .movie-card {
-        max-width: 100%; /* Full width on small screens */
-    }
+#episode-list {
+    margin-top: 1rem;
+    width: 100%;
+    max-width: 100%;
+}
 
-    #movie-detail {
-        padding: 1rem;
-    }
+.episode-item {
+    margin: 0.5rem 0;
+}
+
+.episode-item button {
+    margin-top: 0.5rem;
+}
+
+/* Nút trở về */
+button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #555;
 }
 
 footer {
@@ -83,8 +113,18 @@ footer {
     color: #fff;
     padding: 0.5rem;
     text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
 
-button {
-    margin-top: 1rem;
+/* Media Queries cho Thiết Bị Di Động */
+@media (max-width: 600px) {
+    .movie-card {
+        max-width: 100%; /* Chiều rộng đầy đủ trên màn hình nhỏ */
+    }
+
+    #movie-detail {
+        padding: 1rem;
+    }
 }
