@@ -1,0 +1,54 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 1rem;
+    text-align: center;
+}
+
+main {
+    padding: 1rem;
+}
+
+#movie-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.movie-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    width: 300px; /* Increased width to accommodate video player */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.movie-card img, .movie-card video {
+    width: 100%;
+    height: auto;
+}
+
+.movie-card h2 {
+    font-size: 1.2rem;
+    margin: 0.5rem;
+}
+
+.movie-card p {
+    font-size: 0.9rem;
+    margin: 0.5rem;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 0.5rem;
+    text-align: center;
+}
