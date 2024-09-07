@@ -77,3 +77,15 @@ footer {
 button {
     margin-top: 1rem;
 }
+
+/* Các kiểu CSS khác của bạn */
+
+@media (max-width: 600px) {
+    .movie-card {
+        max-width: 100%; /* Full width on small screens */
+    }
+
+    #movie-detail {
+        padding: 1rem;
+    }
+}
