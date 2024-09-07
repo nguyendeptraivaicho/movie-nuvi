@@ -62,7 +62,7 @@ main {
 }
 
 video {
-    width: 100%; /* Full width */
+    width: auto; /* Full width */
     height: auto; /* Maintain aspect ratio */
 }
 
