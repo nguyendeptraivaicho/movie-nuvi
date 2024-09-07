@@ -6,17 +6,23 @@ document.addEventListener('DOMContentLoaded', () => {
             title: 'Movie 1',
             description: 'This is a description of Movie 1.',
             image: 'images/movie1.jpg',
-            video: 'videos/movie1.mp4'
+            episodes: [
+                { title: 'Episode 1', video: 'videos/movie1-ep1.mp4' },
+                { title: 'Episode 2', video: 'videos/movie1-ep2.mp4' }
+            ]
         },
         {
             id: 2,
             title: 'Movie 2',
             description: 'This is a description of Movie 2.',
             image: 'images/movie2.jpg',
-            video: 'videos/movie2.mp4'
+            episodes: [
+                { title: 'Episode 1', video: 'videos/movie2-ep1.mp4' },
+                { title: 'Episode 2', video: 'videos/movie2-ep2.mp4' }
+            ]
         }
-        // Add more movies as needed
     ];
+    
 
     const movieList = document.getElementById('movie-list');
     const movieDetail = document.getElementById('movie-detail');
