@@ -58,13 +58,24 @@ main {
     margin-top: 1rem;
     width: 100%;
     max-width: 100%;
-    box-sizing: border-box;
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
 }
 
 video {
     width: 100%;
     height: auto;
     max-width: 100%; /* Prevent overflow */
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 600px) {
+    .movie-card {
+        max-width: 100%; /* Full width on small screens */
+    }
+
+    #movie-detail {
+        padding: 1rem;
+    }
 }
 
 footer {
@@ -76,16 +87,4 @@ footer {
 
 button {
     margin-top: 1rem;
-}
-
-/* Các kiểu CSS khác của bạn */
-
-@media (max-width: 600px) {
-    .movie-card {
-        max-width: 100%; /* Full width on small screens */
-    }
-
-    #movie-detail {
-        padding: 1rem;
-    }
 }
