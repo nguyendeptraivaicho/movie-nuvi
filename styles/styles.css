@@ -62,8 +62,8 @@ main {
 }
 
 video {
-    width: auto; /* Full width */
-    height: auto; /* Maintain aspect ratio */
+    width: 20; /* Full width */
+    height: 20; /* Maintain aspect ratio */
 }
 
 footer {
