@@ -1,44 +1,59 @@
 <?php
 
 namespace App\Http\Controllers;
-use Auth;
-use App\Models\Comment;
-use App\Models\SeriMovie;
-use App\Models\Rating;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redirect;
 
+use Illuminate\Http\Request;
+use App\Comment;
+use App\Film;
 class CommentController extends Controller
 {
-    public function AuthLogin(){
-        $admin_id = Auth::id();
-        if($admin_id){
-            return Redirect::to('dashboard');
-        }else{
-            return Redirect::to('login')->send();
-        }
+    //
+    public function DanhSach(){
+        $comment=Comment::all();
+        return view('Admin/Comment/DanhSach',['comment'=>$comment]);
     }
-    public function index(){
-        $this->AuthLogin();
-        $comment = Comment::with('seri')->where('comment_parent_comment','=',0)->orderBy('comment_id','DESC')->get();
-        $comment_rep = Comment::with('product')->where('comment_parent_comment','>',0)->get();
-        return view('backend.comment.all_comment')->with(compact('comment','comment_rep'));
+   
+    public function Xoa($id){
+      $comment=Comment::find($id);
+        $comment->delete();
+        return redirect('Admin/Comment/DanhSach');
     }
-    public function reply_comment(Request $request){
-        $data = $request->all();
-        $comment = new Comment();
-        $comment->comment = $data['comment'];
-        $comment->seri_id = $data['seri_id'];
-        $comment->comment_parent_comment = $data['comment_id'];
-        $comment->comment_status = 0;
-        $comment->comment_name = 'NgocNTN';
+     public function XoaComment($id){
+      $comment=Comment::find($id);
+        $comment->delete();
+       
+
+        
+    }
+    public function Insert($idFilm,$idUser,$content){
+       
+        $comment=new Comment;
+        $comment->iduser=$idUser;
+        $comment->idFilm=$idFilm;
+        $comment->content=$content;
+<<<<<<< HEAD
+        $comment->time=now();
+=======
+        $comment->time="1997-04-02";
+>>>>>>> develop
         $comment->save();
+        $name=$comment->User->name;
+       
+       return view("Watch/InsertComment",['comment'=>$comment]);
+      
 
     }
-    public function allow_comment(Request $request){
-        $data = $request->all();
-        $comment = Comment::find($data['comment_id']);
-        $comment->comment_status = $data['comment_status'];
-        $comment->save();
+    public function Test(){
+        return view('test');
+       
+    }
+    public function CommentTest(){
+        return view("WatchFilm/InsertComment");
+    }
+    public function EditComment($idComment){
+        $comment=Comment::Where('id',$idComment);
+         echo "<td><input class='form-control' name='EditComment' value='$comment->content' /></td>
+         <td></td><td></td>
+         <td>Hủy &nbsp;&nbsp;&nbsp; Lưu</td>";
     }
 }

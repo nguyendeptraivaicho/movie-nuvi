@@ -1,6 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,113 +15,187 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/', function () {
+    return view('main');
 
-Route::get('/', 'HomeController@index');
-Route::get('/home', 'HomeController@index');
-Route::post('/tim-kiem','HomeController@search');
-Route::get('/404','HomeController@error_page');
-//
-Route::get('/dang-nhap','HomeController@login_customer');
-//
-Route::get('/danh-muc/{category_slug}','HomeController@show_category');
-Route::get('/the-loai/{genre_slug}','HomeController@show_genre');
-//
-Route::get('/seri-phim/{seri_name_slug}', 'SeriMovieController@show_details_seri');
-Route::get('/xem-phim/{seri_name_slug}', 'SeriMovieController@show_movie');
-Route::get('/xem-tap-phim/{movie_slug}', 'SeriMovieController@watch_movie');
+});
 
-//login User trang Home
-Route::get('/dang-nhap','AuthController@dang_nhap_user');
-Route::post('/login-user','AuthController@login_user');
-Route::get('/dang-ky','AuthController@dang_ky');
-Route::post('/register-user','AuthController@register_user');
-Route::get('/dang-xuat','AuthController@logout_user');
-
-//Comment
-Route::post('/load-comment','HomeController@load_comment');
-Route::post('/send-comment','HomeController@send_comment');
-Route::get('/all-comment','CommentController@index');
-Route::post('/allow-comment','CommentController@allow_comment');
-Route::post('/reply-comment','CommentController@reply_comment');
-
-
-//---------------------------------------------------------------------
-//Trang Admin
-Route::get('/dashboard','AdminController@show_dashboard');
-Route::post('/admin-dashboard','AdminController@dashboard');
-//
-Route::get('/login','AuthController@login');
-Route::post('/login-admin','AuthController@login_admin');
-Route::get('/register','AuthController@register');
-Route::post('/register-admin','AuthController@register_admin');
-Route::get('/logout','AuthController@logout');
-
-//User-Admin
-Route::get('/add-admin', 'UserController@add_movie');
-Route::get('/all-users','UserController@index');
-Route::post('/save-movie', 'UserController@save_movie');
-Route::get('/delete-movie/{admin_id}', 'UserController@delete_movie');
-Route::get('/all-us', 'UserController@all_movie');
-Route::get('/active-admin/{movie_id}', 'UserController@edit_movie');
-Route::get('/unactive-admin/{admin_id}', 'UserController@edit_movie');
-Route::get('/edit-movie/{admin_id}', 'UserController@edit_movie');
-Route::post('/update-movie/{admin_id}', 'UserController@update_movie');
-
-
-//Dang nhap fb-gmail
-Route::get('/login-facebook','AdminController@login_facebook');
-Route::get('/admin/callback-fb','AdminController@callback_facebook');
-Route::get('/login-google','AdminController@login_google');
-Route::get('/admin/callback-gg','AdminController@callback_google');
-
-
-//Seri-Film (1 bộ phim gồm nhiều 1 tập phim)
-Route::get('/add-seri-movie', 'SeriMovieController@add_seri_movie');
-Route::post('/save-seri-movie', 'SeriMovieController@save_seri_movie');
-Route::get('/delete-seri-movie/{seri_id}', 'SeriMovieController@delete_seri_movie');
-Route::get('/all-seri-movie', 'SeriMovieController@all_seri_movie');
-Route::get('/edit-seri-movie/{seri_id}', 'SeriMovieController@edit_seri_movie');
-Route::get('/unactive-seri-movie/{seri_id}', 'SeriMovieController@unactive_seri_movie');
-Route::get('/active-seri-movie/{seri_id}', 'SeriMovieController@active_seri_movie');
-Route::post('/update-seri-movie/{seri_id}', 'SeriMovieController@update_seri_movie');
-
-//Film (1 tập phim chỉ thuộc 1 bộ phim)
-Route::get('/add-movie', 'MovieController@add_movie');
-Route::post('/save-movie', 'MovieController@save_movie');
-Route::get('/delete-movie/{movie_id}', 'MovieController@delete_movie');
-Route::get('/all-movie', 'MovieController@all_movie');
-Route::get('/edit-movie/{movie_id}', 'MovieController@edit_movie');
-Route::post('/update-movie/{movie_id}', 'MovieController@update_movie');
-
-//banner
-Route::get('/add-banner', 'HomeController@add_banner');
-Route::get('/edit-banner', 'HomeController@add_banner');
-Route::get('/unactive-banner/{banner_id}', 'HomeController@unactive-banner');
-Route::get('/active-banner/{banner_id}', 'HomeController@active-banner');
-Route::post('/save-banner', 'HomeController@save_banner');
-
-//
-// Route::get('/register-auth','AuthController@register_auth');
-// Route::get('/login-auth','AuthController@login_auth');
-// Route::post('/register','AuthController@register');
-// Route::post('/login','AuthController@login');
-// Route::get('/logout-auth','AuthController@logout_auth');
-
-// Route::group(['middleware' => 'auth.roles'], function () {
-// 	Route::get('/add-product','ProductController@add_product');
-// 	Route::get('/edit-product/{product_id}','ProductController@edit_product');
+Route::get('/review', function () {
+   return view('review'); 
+});
+Route::get('/login', function () {
+   return view('login'); 
+});
+<<<<<<< HEAD
+// Route::get('/signup', function () {
+//    return view('signup'); 
 // });
-Route::get('all-users','UserController@index');
-Route::get('    ','UserController@reset_password');
-// Route::get('users','UserController@index')->middleware('auth.roles');
-// Route::get('add-users','UserController@add_users')->middleware('auth.roles');
-// Route::get('delete-user-roles/{admin_id}','UserController@delete_user_roles')->middleware('auth.roles');
-// Route::post('store-users','UserController@store_users')->middleware('auth.roles');
-// Route::post('assign-roles','UserController@assign_roles');
+Route::get('/infor/{id}',['as'=>'infor','uses'=> 'HomeController@infor']);
+=======
+Route::get('/signup', function () {
+   return view('signup'); 
+});
+Route::get('/infor/{id}',['as'=>'infor','uses'=> 'InformationController@infor']);
+<<<<<<< HEAD
+=======
+>>>>>>> 4aa25f1... nang cap trang information.blade, khôi phục lại mainframe, edit, delete bình luận đang còn lỗi
+>>>>>>> develop
+Route::get('/search', function () {
+   return view('search'); 
+});
 
-// Route::get('impersonate/{admin_id}','UserController@impersonate');
-// Route::get('impersonate-destroy','UserController@impersonate_destroy');
+//Route::get('/watch/{id}',['as'=>'watch','uses'=>'HomeController@watch']);
+Route::get('/watch/{id}',function ($id){
+	return view('watch',['idFilm'=>$id]);
+});
+
+// Route::get("/about",function(){
+// 	return view('about');
+// });
+
+//Auth::routes();
+
+// Route::get('/home', 'HomeController@index')->name('home');
+Route::get("createDB",function(){
+	
+	//echo DB::table('users')->select(DB::raw('id,name as Uname,email'))->whereRaw('id>2 and email like "%gmail.com" or id < 2')->get();
+	$conn = mysqli_connect('localhost', "root", "");
+	if(! $conn )
+{
+  die('Khong the ket noi: ' . mysqli_error());
+}{
+	echo 'Ket noi thanh cong<br />';
+	mysqli_close();
+}
+});
+
+
+//
+Route::group(['prefix'=>'Admin','middleware'=>'Admin'],function(){
+
+Route::group(['prefix'=>'Film'],function(){
+Route::get('DanhSach','FilmController@DanhSach');
+Route::get('Them','FilmController@GetThem');
+Route::post('Them','FilmController@PostThem');
+Route::get('Sua/{id}','FilmController@GetSua');
+Route::post('Sua/{id}','FilmController@PostSua');
+Route::get('Xoa/{id}','FilmController@Xoa');
+});
+
+Route::group(['prefix'=>'Category'],function(){
+Route::get('DanhSach','CategoryController@DanhSach');
+Route::get('Them','CategoryController@GetThem');
+Route::post('Them','CategoryController@PostThem');
+Route::get('Sua/{id}','CategoryController@GetSua');
+Route::post('Sua/{id}','CategoryController@PostSua');
+Route::get('Xoa/{id}','CategoryController@Xoa');
+});
+
+Route::group(['prefix'=>'User'],function(){
+Route::get('DanhSach','UserController@DanhSach');
+Route::get('Them','UserController@GetThem');
+Route::post('Them','UserController@PostThem');
+Route::get('Sua/{id}','UserController@GetSua');
+Route::post('Sua/{id}','UserController@PostSua');
+Route::get('Xoa/{id}','UserController@Xoa');
+});
+
+Route::group(['prefix'=>'Admin'],function(){
+Route::get('DanhSach','AdminController@DanhSach');
+Route::get('Them','AdminController@GetThem');
+Route::post('Them','AdminController@PostThem');
+Route::get('Sua/{id}','AdminController@GetSua');
+Route::post('Sua/{id}','AdminController@PostSua');
+Route::get('Xoa/{id}','AdminController@Xoa');
+});
+
+Route::group(['prefix'=>'Comment'],function(){
+Route::get('DanhSach','CommentController@DanhSach');
+
+Route::get('Xoa/{id}','CommentController@Xoa');
+});
+
+Route::group(['prefix'=>'FilmAndCategory'],function(){
+Route::get('DanhSach','FilmAndCategoryController@DanhSach');
+Route::get('Them','FilmAndCategoryController@GetThem');
+Route::post('Them','FilmAndCategoryController@PostThem');
+Route::get('Sua/{idFilm}/{idCategory}','FilmAndCategoryController@GetSua');
+Route::post('Sua/{idFilm}/{idCategory}','FilmAndCategoryController@PostSua');
+Route::get('Xoa/{idFilm}/{idCategory}','FilmAndCategoryController@Xoa');
+});
+Route::post('TimKiem','FilmAndCategoryController@TimKiem');
+});
+Route::get('/TrangChu','TrangChuController@category');
+
+Route::get('/DangNhap',function(){
+	return view('Page.dangnhap');
+});
+//
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> develop
+Route::get('WatchFilm',function(){
+	return view('watch');
+});
+Route::get('/Ajax/Like/{idUser}/{idFilm}','AjaxController@GetLike');
+Route::get('/Ajax/Dislike/{idUser}/{idFilm}','AjaxController@GetDislike');
+Route::get('/Ajax/DestroyLike/{idUser}/{idFilm}','AjaxController@DestroyLike');
+Route::get('Comment/Xoa/{id}','CommentController@XoaComment');
+
+Route::get('Comment','CommentController@Comment');
+
+Route::get('CheckUserAdmin/{user}','AdminController@CheckUserAdmin');
+Route::get("CommentTest","CommentController@CommentTest");
+
+Route::get("SearchFilm/{id}","FilmController@SearchFilm");
+
+<<<<<<< HEAD
+
+Route::post("login","UserController@postLogin");
+
+=======
+<<<<<<< HEAD
+
+Route::post("login","UserController@postLogin");
+=======
+>>>>>>> af3950bfbad09599f95c528ca76f29c19f9ff187
+>>>>>>> develop
+Route::get("/LogOut","UserController@LogOut");
+
+Route::get("signup","UserController@signUpForm");
+Route::post("signup","UserController@Signup");
+
+Route::get("login","UserController@loginForm");
+Route::post("login","UserController@postLogin");
 
 
 
+Route::group(['middleware'=>['web']],function(){
+ Route::get("Session",function(){
+ 	Session::put('Test','Laravel');
+ 	echo "đã chạy session";
+ });
+ Route::get('Comment/Insert/{idFilm}/{idUser}/{content}','CommentController@Insert');
+});
 
+Route::get('WatchFilm/{id}','FilmController@WatchFilm');
+
+
+
+<<<<<<< HEAD
+
+Route::get("EditComment/{idComment}","CommentController@EditComment");
+Route::get("RightFilm/{id}","FilmController@RightFilm");
+=======
+=======
+
+<<<<<<< HEAD
+Route::get('signup', 'SignUpController@signUpForm');
+Route::post('create', 'SignUpController@signUp');
+>>>>>>> 83837fcb7daf3c33bb36f61846a662266d41e361
+=======
+Route::get("EditComment/{idComment}","CommentController@EditComment");
+Route::get("RightFilm/{id}","FilmController@RightFilm");
+>>>>>>> 46df54a... nd admin comment like search
+>>>>>>> develop
