@@ -1,47 +1,70 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Sample movie data
     const movies = [
         {
             id: 1,
             title: 'Movie 1',
             description: 'This is a description of Movie 1.',
             image: 'images/movie1.jpg',
-            videoUrl: 'https://youtu.be/USBi6RWOEtg?si=7t9hNqZpZtStAhv7'
+            episodes: [
+                { title: 'Episode 1', videoUrl: 'https://youtu.be/USBi6RWOEtg?si=rHG2p0KcwcxqXVGK' },
+                { title: 'Episode 2', videoUrl: 'https://youtu.be/USBi6RWOEtg?si=rHG2p0KcwcxqXVGK' }
+            ]
         },
         {
             id: 2,
             title: 'Movie 2',
             description: 'This is a description of Movie 2.',
             image: 'images/movie2.jpg',
-            videoUrl: 'https://youtu.be/USBi6RWOEtg?si=7t9hNqZpZtStAhv7'
+            episodes: [
+                { title: 'Episode 1', videoUrl: 'https://youtu.be/USBi6RWOEtg?si=rHG2p0KcwcxqXVGK' },
+                { title: 'Episode 2', videoUrl: 'https://youtu.be/USBi6RWOEtg?si=rHG2p0KcwcxqXVGK' }
+            ]
         }
-        // Add more movies as needed
     ];
 
     const movieList = document.getElementById('movie-list');
     const movieDetail = document.getElementById('movie-detail');
+    const episodeList = document.getElementById('episode-list');
     const videoContainer = document.getElementById('video-container');
     const backButton = document.getElementById('back-button');
     const searchInput = document.getElementById('search-input');
 
-    function showMovieDetail(movie) {
-        movieList.style.display = 'none';
-        movieDetail.style.display = 'block';
+    function showEpisodeList(episodes) {
+        episodeList.innerHTML = '';
+        episodeList.style.display = 'block';
+        videoContainer.innerHTML = ''; // Clear video container
 
+        episodes.forEach((episode) => {
+            const episodeButton = document.createElement('button');
+            episodeButton.textContent = episode.title;
+            episodeButton.onclick = () => showVideo(episode.videoUrl);
+            episodeList.appendChild(episodeButton);
+        });
+    }
+
+    function showVideo(videoUrl) {
         videoContainer.innerHTML = `
-            <h2>${movie.title}</h2>
-            <p>${movie.description}</p>
             <video controls>
-                <source src="${movie.video}" type="video/mp4">
+                <source src="${videoUrl}" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
         `;
     }
 
+    function showMovieDetail(movie) {
+        movieList.style.display = 'none';
+        movieDetail.style.display = 'flex';
+        episodeList.style.display = 'block'; // Show episode list by default
+
+        videoContainer.innerHTML = ''; // Clear video container
+
+        showEpisodeList(movie.episodes);
+    }
+
     function showMovieList() {
         movieList.style.display = 'flex';
         movieDetail.style.display = 'none';
-        videoContainer.innerHTML = ''; // Clear video container
+        episodeList.style.display = 'none'; // Hide episode list when back to list
     }
 
     function renderMovies(filter = '') {
