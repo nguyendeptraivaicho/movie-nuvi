@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
             title: 'Movie 2',
             description: 'This is a description of Movie 2.',
             image: 'images/movie2.jpg',
-            video: 'videos/movie2.mp4'
+            videoUrl: 'https://youtu.be/USBi6RWOEtg?si=7t9hNqZpZtStAhv7'
         }
         // Add more movies as needed
     ];
