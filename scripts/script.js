@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
             title: 'Movie 1',
             description: 'This is a description of Movie 1.',
             image: 'images/movie1.jpg',
-            video: 'videos/movie1.mp4'
+            videoUrl: 'https://youtu.be/USBi6RWOEtg?si=7t9hNqZpZtStAhv7'
         },
         {
             id: 2,
